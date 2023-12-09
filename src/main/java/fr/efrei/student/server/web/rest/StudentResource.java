@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 @RequestMapping("/api")
@@ -48,5 +49,16 @@ public class StudentResource {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+    @PutMapping("/students/{id}")
+    public ResponseEntity<Object> updateStudent(@RequestBody Student updatedStudent, @PathVariable Long id){
+        try {
+            Student result = studentService.updateStudent(id, updatedStudent);
+            return ResponseEntity.ok(result);
+        } catch (EntityNotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }
