@@ -21,5 +21,13 @@ public class StudentService {
 
     public Optional<Student> findById(long id) { return studentRepository.findById(id); }
 
+    public Student saveStudent (Student student) {
+        // Manual validation of my student insertion requirements
+        if (student.getName() == null || student.getName().isEmpty() || student.getAge() == null || student.getAge() <= 0) {
+            // Throw an exception
+            throw new IllegalArgumentException("Name and age are required");
+        }
 
+        return studentRepository.save(student);
+    }
 }
