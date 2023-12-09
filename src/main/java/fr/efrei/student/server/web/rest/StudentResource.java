@@ -3,10 +3,8 @@ package fr.efrei.student.server.web.rest;
 import fr.efrei.student.server.domain.Student;
 import fr.efrei.student.server.service.StudentService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +36,16 @@ public class StudentResource {
         } else {
             // Return 404 Not Found if the student is not found
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PostMapping("/students")
+    public ResponseEntity<Object> createStudent(@RequestBody Student student) {
+        try {
+            Student createdStudent = studentService.saveStudent(student);
+            return ResponseEntity.ok(createdStudent);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
 
