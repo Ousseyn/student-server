@@ -60,5 +60,12 @@ public class StudentResource {
         }
     }
 
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
+        // Call the delete method in the service
+        boolean deleted = studentService.deleteStudent(id);
 
+        // Return the appropriate response based on whether the deletion was successful or not
+        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
+    }
 }

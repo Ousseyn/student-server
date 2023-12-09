@@ -97,4 +97,23 @@ public class StudentResourceIT {
         assertThat(studentAfterNullUpdate.getAge()).isEqualTo(totallyUpdatedStudent.getAge());
         assertThat(studentAfterNullUpdate.getName()).isEqualTo(totallyUpdatedStudent.getName());
     }
+
+    @Test
+    @Transactional
+    void testDeleteStudent() {
+        // Create a new student in the database
+        Student student = new Student();
+        student.setAge(25);
+        student.setName("To Be Deleted");
+        studentRepository.save(student);
+
+        // Get the ID of the created student
+        Long studentId = student.getId();
+
+        // Delete the student
+        studentResource.deleteStudent(studentId);
+
+        // Check if the student is deleted
+        assertThat(studentRepository.findById(studentId)).isEmpty();
+    }
 }

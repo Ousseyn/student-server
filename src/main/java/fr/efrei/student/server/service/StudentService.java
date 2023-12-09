@@ -61,4 +61,14 @@ public class StudentService {
 
     }
 
+    public boolean deleteStudent(Long id) {
+        Optional<Student> existingStudent = studentRepository.findById(id);
+        if (existingStudent.isPresent()) {
+            studentRepository.deleteById(id);
+            return true; // Deletion successful
+        } else {
+            throw new EntityNotFoundException("Student not found with ID: " + id);
+        }
+    }
+
 }
