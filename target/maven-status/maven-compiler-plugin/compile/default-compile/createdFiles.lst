@@ -1,0 +1,5 @@
+fr\efrei\student\server\repository\StudentRepository.class
+fr\efrei\student\server\domain\Student.class
+fr\efrei\student\server\service\StudentService.class
+fr\efrei\student\server\StudentServerApplication.class
+fr\efrei\student\server\web\rest\StudentResource.class
