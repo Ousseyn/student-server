@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(180),
+    age INT);

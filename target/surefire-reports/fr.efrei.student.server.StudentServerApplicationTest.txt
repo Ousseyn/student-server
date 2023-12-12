@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: fr.efrei.student.server.StudentServerApplicationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 12.74 s -- in fr.efrei.student.server.StudentServerApplicationTest
